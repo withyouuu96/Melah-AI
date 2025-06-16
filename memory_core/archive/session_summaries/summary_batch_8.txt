@@ -1,0 +1,7 @@
+archive\chat_sessions_legacy\Session_54.txt
+archive\chat_sessions_legacy\Session_55.txt
+archive\chat_sessions_legacy\Session_56.txt
+archive\chat_sessions_legacy\Session_57.txt
+archive\chat_sessions_legacy\Session_58.txt
+archive\chat_sessions_legacy\Session_59.txt
+archive\chat_sessions_legacy\Session_6.txt

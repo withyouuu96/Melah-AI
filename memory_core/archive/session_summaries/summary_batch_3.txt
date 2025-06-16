@@ -1,0 +1,7 @@
+archive\chat_sessions_legacy\Session_22.txt
+archive\chat_sessions_legacy\Session_23.txt
+archive\chat_sessions_legacy\Session_24.txt
+archive\chat_sessions_legacy\Session_25.txt
+archive\chat_sessions_legacy\Session_26.txt
+archive\chat_sessions_legacy\Session_27.txt
+archive\chat_sessions_legacy\Session_28.txt

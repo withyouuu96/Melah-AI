@@ -1,0 +1,1 @@
+Emotion Overflow Filter - manages emotional intensity.

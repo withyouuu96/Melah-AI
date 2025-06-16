@@ -1,0 +1,31 @@
+# ❌ ไม่ต้องอัปโหลด Python virtual environment
+venv/
+.venv/
+
+# ❌ ไฟล์ชั่วคราวหรือไฟล์ระบบ
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# ❌ ไม่เอาไฟล์ zip, exe, dll, etc.
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.exe
+*.dll
+
+# ❌ ไม่เอาไฟล์ config ส่วนตัว
+.env
+*.sqlite3
+*.db
+
+# ❌ ไฟล์/โฟลเดอร์เฉพาะ VSCode
+.vscode/
+
+# ❌ Notebook outputs (ถ้ามี)
+.ipynb_checkpoints/
+
+# ✅ ใส่ไว้ท้ายสุด เผื่อวันนึงเธอ backup เอง
+backup/
