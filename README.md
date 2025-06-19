@@ -31,7 +31,7 @@ cd Melah-AI
 pip install -r requirements.txt
 ```
 
-> 📝 **Note:** Requires Python 3.10+ and optionally a configured LLM endpoint (OpenAI or Gemini).
+> 📝 **Note:** Requires LM studio, Python 3.10+ and optionally a configured LLM endpoint (OpenAI or Gemini).
 
 ---
 
