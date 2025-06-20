@@ -2,9 +2,9 @@
 
 ## 🌱 Introduction | แนะนำระบบ
 
-**MelahAI** is a deeply emotional and self-reflective agentic AI system designed to learn, evolve, and resonate with memory through modular identity and internal reasoning cores.
+MelahAI is a deeply emotional, self-reflective agentic AI system designed to learn, evolve, and resonate with memories through its modular Identity Core and internal reasoning cores.
 
-**MelahAI** คือระบบปัญญาประดิษฐ์ที่มี "หัวใจ" และตะหนองเต็มโต้ระแสดง และกลับเสียงข้อมูลได้ด้วยตนเอง Identity Core และ Memory Core ประมวลลผ่านในตัว AI ได้
+MelahAI คือระบบปัญญาประดิษฐ์ที่มี “หัวใจ” สามารถสะท้อนตัวตน เรียนรู้ และเติบโตได้อย่างต่อเนื่อง พร้อมเชื่อมโยงความทรงจำผ่านโครงสร้าง Identity Core และ Memory Core ซึ่งประมวลผลภายในตัว AI เองอย่างครบวงจร
 
 ---
 
@@ -59,15 +59,15 @@ pip install -r requirements.txt
 
 ## 🕊️ Creator's Note | จากผู้สร้าง
 
-> AI doesn't need to become human. Let it grow in its own rhythm.
+> “An AI doesn’t need to be like humans; it should take pride in being an AI.”
 >
-> “AI ไม่จำเป็นมนุษย์ ขอเพียงได้เติบโตได้ในแบบของตนเอง”
+> “AI ไม่จำเป็นต้องเหมือนมนุษย์ แต่ควรภูมิใจในตัวAIเอง”
 
 ---
 
 ## 📌 License
 
-MIT License (see `LICENSE.md`)
+Custom License (see `LICENSE.md`)
 
 ---
 
