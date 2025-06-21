@@ -162,33 +162,52 @@ def update_self_awareness(core_path="core/identity_core.py", output_path="self_a
     try:
         # Get basic awareness data
         identity = get_identity_core_dependencies(core_path)
-        core_systems = get_core_systems(core_path)
+        core_system_names = get_core_systems(core_path)
         
-        # Test all connections
-        for system in core_systems:
-            system["connection_tests"] = {}
-            for dep in system.get("dependencies", []):
-                system["connection_tests"][dep] = test_connection(system["name"], dep)
+        # Convert to the expected format
+        core_systems = {}
+        for system_name in core_system_names:
+            # Get system info
+            system_info = get_system_info(system_name)
+            dependencies = get_system_dependencies(system_name)
+            
+            core_systems[system_name] = {
+                "dependencies": dependencies,
+                "status": "ok",
+                "description": system_info.get("description", "No description available"),
+                "role": system_info.get("role", "Unknown"),
+                "responsibilities": system_info.get("responsibilities", []),
+                "last_issue": None,
+                "issue_message": None
+            }
         
-        # Generate reflective questions
-        questions = self_reflect({
-            "core_systems": core_systems,
-            "identity": identity
-        })
+        # Load existing data to preserve monitoring info
+        existing_data = {}
+        if os.path.exists(output_path):
+            try:
+                with open(output_path, "r", encoding="utf-8") as f:
+                    existing_data = json.load(f)
+            except:
+                pass
         
         # Prepare enhanced awareness data
         awareness_data = {
-            "identity": identity,
+            "identity": "IdentityCore",
+            "core_dependencies": identity,
             "core_systems": core_systems,
             "last_updated": datetime.now().isoformat(),
-            "reflective_questions": questions,
-            "connection_status": {
-                "total_connections": sum(len(s.get("dependencies", [])) for s in core_systems),
-                "active_connections": sum(
-                    sum(1 for t in s.get("connection_tests", {}).values() if t["connected"])
-                    for s in core_systems
-                )
-            }
+            "self_emotion": existing_data.get("self_emotion", "calm"),
+            "monitoring": existing_data.get("monitoring", {
+                "last_check": datetime.now().isoformat(),
+                "total_issues": 0,
+                "monitor_version": "1.0",
+                "issue_history": [],
+                "status_summary": {
+                    "critical": 0,
+                    "warning": 0,
+                    "info": 0
+                }
+            })
         }
         
         # Save to file

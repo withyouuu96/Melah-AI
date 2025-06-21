@@ -32,6 +32,7 @@ from .refine_layer import RefineLayer
 from .vector_memory_index import VectorMemoryIndex
 from core.seed.seed_engine import SeedEngine
 from .int_world import IntWorld
+from .memory_hooks import memory_hooks, record_conversation_pair
 
 class IdentityCore:
     """
@@ -90,9 +91,13 @@ class IdentityCore:
         self.meta_manager = MemoryMetaManager(resolved_memory_json_path)
         self.memory_bridge = MemoryPathBridge(self.path_manager, self.meta_manager)
 
-        self.vector_memory_index = None
-        if self.meta_manager.memory_dict:
-            self.vector_memory_index = VectorMemoryIndex(self.meta_manager.memory_dict)
+        # Always create vector_memory_index, even if no existing memories
+        self.vector_memory_index = VectorMemoryIndex(
+            memory_dict=self.meta_manager.memory_dict if self.meta_manager.memory_dict else {}
+        )
+        
+        # Connect vector_memory_index to memory_hooks
+        memory_hooks.set_vector_memory_index(self.vector_memory_index)
 
         self._load_identity()
         self._load_bookmarks()
@@ -141,7 +146,7 @@ class IdentityCore:
             return {}
 
     def _get_llm_essentials(self):
-        tokenizer, context_limit = None, 4000
+        tokenizer, context_limit = None, 10000
         if hasattr(self.llm, 'get_tokenizer'):
             try:
                 tokenizer = self.llm.get_tokenizer()
@@ -272,6 +277,9 @@ class IdentityCore:
 
                     self.cwm.add_interaction("assistant", styled_final_response)
                     
+                    # --- Auto-Memory Buffer: Record conversation pair ---
+                    record_conversation_pair(user_input, styled_final_response)
+                    
                     if used_session:
                         self.recently_accessed_memories.append(used_session)
                     
@@ -344,13 +352,13 @@ class IdentityCore:
             active_exclude_ids.update(exclude_session_ids)
             
         for memory_id, last_used in self.memory_cooldown.items():
-            if current_time - last_used < 300:  # 5 นาที cooldown
+            if current_time - last_used < 30:  # 5 นาที cooldown
                 active_exclude_ids.add(memory_id)
 
         # ค้นหาความทรงจำที่เกี่ยวข้อง
         search_results = self.vector_memory_index.search(
             query=query_text,
-            top_k=1,
+            top_k=3,
             exclude_ids=list(active_exclude_ids),
             emotion=emotion
         )
@@ -378,7 +386,7 @@ class IdentityCore:
         for content in reversed(chain_contents):
             clean_content = "\n".join(line for line in content.split('\n') if line.strip())
             if len(clean_content) > 400:
-                clean_content = self.nlp_processor.summarize_text(clean_content, target_token_length=300)
+                clean_content = self.nlp_processor.summarize_text(clean_content, target_token_length=1000)
             context_parts.append(clean_content)
 
         memory_context = "\n---\n".join(context_parts)
@@ -421,7 +429,7 @@ class IdentityCore:
             
     def _load_bookmarks(self):
         try:
-            bookmark_path = self.path_manager.get_path("session_bookmarks")
+            bookmark_path = self._resolve_path("memory_core/archive/session_bookmarks.txt")
             if not bookmark_path or not os.path.exists(bookmark_path):
                 self.log_error("Bookmark file not found. No bookmarks loaded.")
                 return
@@ -509,10 +517,9 @@ class IdentityCore:
 
     def report_status(self):
         """
-        รายงานสถานะ self-awareness/connection (เรียกจาก core_awareness_engine)
+        รายงานสถานะ self-awareness/connection
         """
-        self.core_awareness.verify_all_modules()
-        return self.core_awareness.report_self_awareness()
+        return self.get_self_status()
 
     def declare_identity(self):
         """
@@ -678,7 +685,7 @@ class IdentityCore:
     def update_self_awareness(self):
         """Update self-awareness data"""
         try:
-            from core_mapper import update_self_awareness
+            from core.core_mapper import update_self_awareness
             new_data = update_self_awareness()
             if new_data:
                 self.self_awareness = new_data
