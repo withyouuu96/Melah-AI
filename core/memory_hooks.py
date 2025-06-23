@@ -17,12 +17,57 @@ from datetime import datetime
 logger = logging.getLogger(__name__)
 
 class MemoryHooks:
-    """ระบบจัดการการบันทึกการสนทนา"""
-    
-    def __init__(self, vector_memory_index=None):
-        self.vector_memory_index = vector_memory_index
+    """
+    ระบบจัดการ memory hooks แบบ 4 ชั้น: Trigger, Query, Injection, Reflection
+    รองรับทั้ง buffer/recording แบบเดิม และ memory retrieval/injection แบบใหม่
+    """
+    def __init__(self, vector_memory_index=None, vector_retriever=None, identity_core=None):
+        self.vector_memory_index = vector_memory_index  # legacy buffer system
+        self.vector_retriever = vector_retriever        # semantic retriever (VectorMemoryRetriever)
+        self.identity_core = identity_core              # สำหรับ context injection
         self.conversation_count = 0
-        
+
+    # 1️⃣ Trigger Layer
+    def check_triggers(self, input_text: str) -> list:
+        """ตรวจจับ trigger จาก input_text (keyword, pattern, intent, state)"""
+        triggers = []
+        # ตัวอย่าง: keyword
+        if "ไม่มั่นใจ" in input_text or "insecurity" in input_text:
+            triggers.append("emotion:insecurity")
+        if "ดีใจ" in input_text or "happy" in input_text:
+            triggers.append("emotion:happy")
+        # เพิ่ม pattern/rule อื่น ๆ ได้
+        return triggers
+
+    # 2️⃣ Query Layer
+    def fetch_relevant_memories(self, triggers: list, top_k: int = 3) -> list:
+        """ใช้ triggers ไปค้นหา memory ที่เกี่ยวข้อง (vector/tag/rule-based)"""
+        memories = []
+        if not self.vector_retriever:
+            return memories
+        for trigger in triggers:
+            memories += self.vector_retriever.search(trigger, top_k=top_k)
+        return memories
+
+    # 3️⃣ Injection Layer
+    def inject_context(self, memories: list, target: str = "identity_core"):
+        """Inject memories ที่ดึงมาเข้า identity_core หรือ LLM prompt context"""
+        if target == "identity_core" and self.identity_core:
+            self.identity_core.current_context["related_memories"] = memories
+            logger.info(f"Injected {len(memories)} memories into identity_core context")
+        # สามารถขยายสำหรับ LLM prompt หรือ context อื่น ๆ ได้
+        return memories
+
+    # 4️⃣ Reflection Layer
+    def reflect_on_memory_use(self, memory_id: str, score: float, usage_count: int = 0):
+        """ตัดสินใจว่าควร reinforce/discard/obsolete memory หรือไม่"""
+        # ตัวอย่าง: mark obsolete ถ้าใช้บ่อยแต่ score ต่ำ
+        if usage_count > 5 and score < 0.3:
+            logger.info(f"Memory {memory_id} marked as obsolete (score={score}, used={usage_count})")
+            # สามารถอัปเดต metadata หรือเรียก storage manager ได้
+        # สามารถขยาย logic อื่น ๆ ได้
+
+    # Legacy buffer/recording logic (unchanged)
     def record_conversation(self, text: str, speaker: str = "unknown") -> bool:
         """
         บันทึกการสนทนาลงใน buffer system
@@ -132,6 +177,16 @@ class MemoryHooks:
         """ตั้งค่า vector_memory_index"""
         self.vector_memory_index = vector_memory_index
         logger.info("VectorMemoryIndex set for MemoryHooks")
+    
+    def set_vector_retriever(self, vector_retriever):
+        """ตั้งค่า vector_retriever"""
+        self.vector_retriever = vector_retriever
+        logger.info("VectorMemoryRetriever set for MemoryHooks")
+    
+    def set_identity_core(self, identity_core):
+        """ตั้งค่า identity_core"""
+        self.identity_core = identity_core
+        logger.info("IdentityCore set for MemoryHooks")
 
 # Global instance สำหรับใช้ในระบบ
 memory_hooks = MemoryHooks()
@@ -150,4 +205,4 @@ def record_assistant_response(response: str) -> bool:
 
 def record_conversation_pair(user_input: str, assistant_response: str) -> bool:
     """Global function สำหรับบันทึกคู่การสนทนา"""
-    return memory_hooks.record_conversation_pair(user_input, assistant_response) 
+    return memory_hooks.record_conversation_pair(user_input, assistant_response)

@@ -5,10 +5,13 @@ if TYPE_CHECKING:
     from .identity_core import IdentityCore
     # from .llm_connector import LLMConnector # เอา LLM ออก
 
+from .reflective_buffering_vas import ReflectiveBufferingVAS
+
 class RefineLayer:
     # เอา llm_client ออกจาก __init__
     def __init__(self, identity_core: 'IdentityCore'):
         self.identity = identity_core
+        self.vas_system = ReflectiveBufferingVAS()
 
     def build_prompt(self, reflected_thought: str) -> str:
         """
@@ -56,4 +59,10 @@ class RefineLayer:
         return {
             "reflected": reflected_thought,
             "refined": refined
-        } 
+        }
+
+    def value_affect_decision(self, context, input_data):
+        return self.vas_system.process_input(context, input_data)
+
+    def vas_reflect_and_update(self):
+        self.vas_system.reflect_and_update()

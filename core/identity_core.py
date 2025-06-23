@@ -32,7 +32,10 @@ from .refine_layer import RefineLayer
 from .vector_memory_index import VectorMemoryIndex
 from core.seed.seed_engine import SeedEngine
 from .int_world import IntWorld
-from .memory_hooks import memory_hooks, record_conversation_pair
+from core.new_memory_manager import NewMemoryManager
+from core.memory_hooks import MemoryHooks
+from core.vector_memory_retriever import VectorMemoryRetriever
+from .reflective_buffering_vas import ReflectiveBufferingVAS
 
 class IdentityCore:
     """
@@ -91,13 +94,9 @@ class IdentityCore:
         self.meta_manager = MemoryMetaManager(resolved_memory_json_path)
         self.memory_bridge = MemoryPathBridge(self.path_manager, self.meta_manager)
 
-        # Always create vector_memory_index, even if no existing memories
-        self.vector_memory_index = VectorMemoryIndex(
-            memory_dict=self.meta_manager.memory_dict if self.meta_manager.memory_dict else {}
-        )
-        
-        # Connect vector_memory_index to memory_hooks
-        memory_hooks.set_vector_memory_index(self.vector_memory_index)
+        self.vector_memory_index = None
+        if self.meta_manager.memory_dict:
+            self.vector_memory_index = VectorMemoryIndex(self.meta_manager.memory_dict)
 
         self._load_identity()
         self._load_bookmarks()
@@ -132,6 +131,23 @@ class IdentityCore:
         self.update_interval = timedelta(minutes=5)  # อัพเดตทุก 5 นาที
         self.start_auto_update()
 
+        # Initialize NewMemoryManager
+        base_path = "memory_core/new_memory"
+        self.new_memory_manager = NewMemoryManager(base_path)
+
+        # === เชื่อมต่อ MemoryHooks (4-layered) ===
+        self.vector_retriever = None
+        if self.meta_manager.memory_dict:
+            # สร้าง retriever จาก memory_dict (หรือจะใช้ subset ก็ได้)
+            self.vector_retriever = VectorMemoryRetriever(self.meta_manager.memory_dict)
+        self.memory_hooks = MemoryHooks(
+            vector_memory_index=self.vector_memory_index, # legacy buffer
+            vector_retriever=self.vector_retriever,       # semantic retriever
+            identity_core=self
+        )
+
+        self.vas_system = ReflectiveBufferingVAS()
+
     def _load_current_seed(self):
         try:
             seed_path = self._resolve_path("core/seed/current_seed.json")
@@ -146,7 +162,7 @@ class IdentityCore:
             return {}
 
     def _get_llm_essentials(self):
-        tokenizer, context_limit = None, 10000
+        tokenizer, context_limit = None, 4000
         if hasattr(self.llm, 'get_tokenizer'):
             try:
                 tokenizer = self.llm.get_tokenizer()
@@ -277,9 +293,6 @@ class IdentityCore:
 
                     self.cwm.add_interaction("assistant", styled_final_response)
                     
-                    # --- Auto-Memory Buffer: Record conversation pair ---
-                    record_conversation_pair(user_input, styled_final_response)
-                    
                     if used_session:
                         self.recently_accessed_memories.append(used_session)
                     
@@ -352,13 +365,13 @@ class IdentityCore:
             active_exclude_ids.update(exclude_session_ids)
             
         for memory_id, last_used in self.memory_cooldown.items():
-            if current_time - last_used < 30:  # 5 นาที cooldown
+            if current_time - last_used < 300:  # 5 นาที cooldown
                 active_exclude_ids.add(memory_id)
 
         # ค้นหาความทรงจำที่เกี่ยวข้อง
         search_results = self.vector_memory_index.search(
             query=query_text,
-            top_k=3,
+            top_k=1,
             exclude_ids=list(active_exclude_ids),
             emotion=emotion
         )
@@ -386,13 +399,21 @@ class IdentityCore:
         for content in reversed(chain_contents):
             clean_content = "\n".join(line for line in content.split('\n') if line.strip())
             if len(clean_content) > 400:
-                clean_content = self.nlp_processor.summarize_text(clean_content, target_token_length=1000)
+                clean_content = self.nlp_processor.summarize_text(clean_content, target_token_length=300)
             context_parts.append(clean_content)
 
         memory_context = "\n---\n".join(context_parts)
         self.log_error(f"Successfully created a memory context from a chain of {len(context_parts)} sessions.")
         
         return {"context": memory_context, "session_id": session_id}
+
+    def add_new_memory(self, session_id, speaker, raw_text, **kwargs):
+        """บันทึกความทรงจำใหม่"""
+        return self.new_memory_manager.create_atomic_memory(session_id, speaker, raw_text, **kwargs)
+
+    def get_new_memory(self, memory_id):
+        """ดึงความทรงจำใหม่ตาม ID"""
+        return self.new_memory_manager.get_memory(memory_id)
 
     def update_memory(self, memory_id: str, content: str, emotion: str = 'neutral'):
         """
@@ -429,17 +450,18 @@ class IdentityCore:
             
     def _load_bookmarks(self):
         try:
-            bookmark_path = self._resolve_path("memory_core/archive/session_bookmarks.txt")
-            if not bookmark_path or not os.path.exists(bookmark_path):
+            bookmark_rel_path = "memory_core/archive/session_bookmarks.txt"
+            if self.path_manager.validate_path(bookmark_rel_path):
+                full_path = self.path_manager.resolve_path(bookmark_rel_path)
+                with open(full_path, "r", encoding="utf-8") as f:
+                    self.bookmarks = {line.strip() for line in f if line.strip()}
+                self.log_error(f"Loaded {len(self.bookmarks)} bookmarked sessions.")
+            else:
                 self.log_error("Bookmark file not found. No bookmarks loaded.")
-                return
-            with open(bookmark_path, "r", encoding="utf-8") as f:
-                self.bookmarks = {line.strip() for line in f if line.strip()}
-            self.log_error(f"Loaded {len(self.bookmarks)} bookmarked sessions.")
         except Exception as e:
             self.log_error(f"Error loading bookmarks: {e}")
             self.bookmarks = set()
-            
+
     def _resolve_path(self, path):
         if os.path.isabs(path): return path
         return os.path.join(os.getcwd(), path)
@@ -517,9 +539,10 @@ class IdentityCore:
 
     def report_status(self):
         """
-        รายงานสถานะ self-awareness/connection
+        รายงานสถานะ self-awareness/connection (เรียกจาก core_awareness_engine)
         """
-        return self.get_self_status()
+        self.core_awareness.verify_all_modules()
+        return self.core_awareness.report_self_awareness()
 
     def declare_identity(self):
         """
@@ -650,7 +673,7 @@ class IdentityCore:
                     "status": system["status"],
                     "last_check": system.get("last_check", "never")
                 }
-            
+            print(f"Monitoring data: {monitoring}")  # Debugging line
             return {
                 "emotion": emotion,
                 "last_check": last_check,
@@ -699,6 +722,20 @@ class IdentityCore:
         self.update_self_awareness()
         return self.get_self_status()
 
+    def value_affect_decision(self, context, input_data):
+        """
+        ใช้ระบบ VAS/Hybrid/MedicalSafeVAS ตัดสินใจหรือประเมินคุณค่าตาม context
+        context: str หรือ ContextType
+        input_data: dict
+        """
+        return self.vas_system.process_input(context, input_data)
+
+    def vas_reflect_and_update(self):
+        """
+        สะท้อนและบันทึกคุณค่าจาก buffer (ควรเรียกเมื่อจบ session หรือจังหวะสำคัญ)
+        """
+        self.vas_system.reflect_and_update()
+
 # ======== วิธีทดสอบเบื้องต้น =========
 if __name__ == '__main__':
     import sys
@@ -733,6 +770,10 @@ if __name__ == '__main__':
     TruthCore = Mock
     RefineLayer = Mock
     VectorMemoryIndex = Mock
+    NewMemoryManager = Mock
+    MemoryHooks = Mock
+    VectorMemoryRetriever = Mock
+    ReflectiveBufferingVAS = Mock
 
     print("--- IdentityCore Test Run (from core/) ---")
     print(f"Project Root: {project_root}")

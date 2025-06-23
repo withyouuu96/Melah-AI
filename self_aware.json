@@ -1,225 +1,352 @@
 {
   "identity": "IdentityCore",
   "core_dependencies": [
-    "refine_layer.py",
     "memory_path_bridge.py",
-    "memory_meta_manager.py",
-    "llm_connector.py",
-    "truth_core.py",
-    "melah_nlp_processor.py",
-    "vector_memory_index.py",
+    "language_stylizer.py",
     "reflector.py",
-    "path_manager.py",
-    "cot_engine.py",
-    "melah_nlp_th.py",
-    "context_window_manager.py",
-    "int_world.py",
     "melah_ml_processor.py",
-    "language_stylizer.py"
+    "cot_engine.py",
+    "memory_meta_manager.py",
+    "context_window_manager.py",
+    "truth_core.py",
+    "llm_connector.py",
+    "vector_memory_index.py",
+    "path_manager.py",
+    "reflective_buffering_vas.py",
+    "melah_nlp_th.py",
+    "int_world.py",
+    "melah_nlp_processor.py",
+    "refine_layer.py"
   ],
   "core_systems": {
     "current_seed": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "identity_path": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "identity_data": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "core_beliefs": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "error_log": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "bookmarks": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "recently_accessed_memories": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "memory_cooldown": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "cognitive_state": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "path_manager": {
       "dependencies": [
         "memory_meta_manager.py"
       ],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "llm": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "nlp_processor": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "ml_processor": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "cot_engine": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "nlp_th_processor": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "cwm": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "meta_manager": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "memory_bridge": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "vector_memory_index": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "truth_core": {
-      "dependencies": [],
-      "status": "active",
+      "dependencies": [
+        "reflective_buffering_vas.py"
+      ],
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "int_world": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "reflector": {
       "dependencies": [
+        "reflective_buffering_vas.py",
         "int_world.py"
       ],
-      "status": "active",
+      "status": "ok",
       "description": "ทำหน้าที่เป็น 'กระจกใจ' ของ Melah",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "refine_layer": {
       "dependencies": [
+        "reflective_buffering_vas.py",
         "identity_core.py"
       ],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "language_stylizer": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "seed_engine": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "last_main_emotion": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "ai_aliases": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     },
     "self_awareness": {
       "dependencies": [],
-      "status": "active",
+      "status": "ok",
       "description": "No description available",
       "role": "Unknown",
-      "responsibilities": []
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
+    },
+    "last_update": {
+      "dependencies": [],
+      "status": "ok",
+      "description": "No description available",
+      "role": "Unknown",
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
+    },
+    "update_interval": {
+      "dependencies": [],
+      "status": "ok",
+      "description": "No description available",
+      "role": "Unknown",
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
+    },
+    "new_memory_manager": {
+      "dependencies": [],
+      "status": "ok",
+      "description": "No description available",
+      "role": "Unknown",
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
+    },
+    "vector_retriever": {
+      "dependencies": [],
+      "status": "ok",
+      "description": "No description available",
+      "role": "Unknown",
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
+    },
+    "memory_hooks": {
+      "dependencies": [],
+      "status": "ok",
+      "description": "No description available",
+      "role": "Unknown",
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
+    },
+    "vas_system": {
+      "dependencies": [],
+      "status": "ok",
+      "description": "No description available",
+      "role": "Unknown",
+      "responsibilities": [],
+      "last_issue": null,
+      "issue_message": null
     }
   },
-  "last_updated": "2025-06-16T16:03:22"
+  "last_updated": "2025-06-23T13:06:30.434858",
+  "self_emotion": "calm",
+  "monitoring": {
+    "last_check": "2025-06-21T21:48:30.949752",
+    "total_issues": 0,
+    "monitor_version": "1.0",
+    "issue_history": [],
+    "status_summary": {
+      "critical": 0,
+      "warning": 0,
+      "info": 0
+    }
+  }
 }
