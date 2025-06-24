@@ -1,2 +1,0 @@
-archive\chat_sessions_legacy\session_001.txt
-archive\chat_sessions_legacy\session_092.txt

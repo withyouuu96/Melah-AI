@@ -50,16 +50,22 @@ _ID_RE = re.compile(r"^[a-zA-Z0-9_\-]{1,64}$")
 
 
 class NewMemoryManager:
-    """Manage atomic chat‑session memories on disk (JSON)."""
+    """
+    Manage atomic chat‑session memories on disk (JSON).
+    
+    หมายเหตุ: ไม่ควรใช้คลาสนี้ในการ log raw chat โดยตรง ให้ใช้ raw_chat_logger เป็นหลัก
+    และใช้ NewMemoryManager สำหรับสร้าง/จัดการ memory object ที่ enrich แล้วเท่านั้น
+    """
 
     SCHEMA_VERSION: str = "3.1"  # bump after refactor
     MANIFEST_LOCK_TIMEOUT: float = 5.0  # seconds
 
     def __init__(self, base_path: str | Path) -> None:
         self.base_path: Path = Path(base_path).expanduser().resolve()
-        self.sessions_path: Path = self.base_path / "sessions"
-        self.summaries_path: Path = self.base_path / "summaries"
-        self.manifest_path: Path = self.base_path / "manifest.json"
+        # Change sessions_path to point to archive/chat_sessions
+        self.sessions_path: Path = self.base_path / "archive" / "chat_sessions"
+        self.summaries_path: Path = self.base_path / "archive" / "summaries"
+        self.manifest_path: Path = self.base_path / "archive" / "manifest.json"
 
         self._ensure_structure()
         logging.info("Memory manager initialised at %s", self.base_path)
@@ -147,6 +153,30 @@ class NewMemoryManager:
             logging.exception("Error reading memory %s: %s", memory_id, exc)
             return None
 
+    @classmethod
+    def from_raw_chat_log(cls, base_path, text, metadata=None, timestamp=None):
+        """
+        สร้าง atomic memory จาก raw chat log ที่ถูกบันทึกโดย raw_chat_logger
+        base_path: path หลักของ memory_core
+        text: ข้อความแชทดิบ
+        metadata: dict (session_id, speaker, nlp, etc.)
+        timestamp: datetime (optional)
+        """
+        mgr = cls(base_path)
+        session_id = metadata.get("session_id") if metadata and "session_id" in metadata else "default_session"
+        speaker = metadata.get("speaker") if metadata and "speaker" in metadata else "user"
+        nlp = metadata.get("nlp") if metadata and "nlp" in metadata else {}
+        content = metadata if metadata else {}
+        # ใช้ timestamp ที่รับมา หรือ datetime.now(timezone.utc)
+        now_utc = timestamp if timestamp else datetime.now(timezone.utc)
+        return mgr.create_atomic_memory(
+            session_id=session_id,
+            speaker=speaker,
+            raw_text=text,
+            content=content,
+            nlp=nlp
+        )
+
     # ------------------------------------------------------------------ #
     # Internal helpers
     # ------------------------------------------------------------------ #
@@ -172,7 +202,7 @@ class NewMemoryManager:
             json.dump(data, fh, indent=2, ensure_ascii=False)
         tmp.replace(path)
 
-    def _manifest_lock(self) -> "FileLock | None":
+    def _manifest_lock(self) -> Optional["FileLock"]:
         if FileLock is None:
             return None
         return FileLock(str(self.manifest_path) + ".lock")
@@ -216,7 +246,6 @@ class NewMemoryManager:
         if not _ID_RE.fullmatch(value):
             raise ValueError(f"Invalid {name}: '{value}'")
 
-
 # --------------------------------------------------------------------------- #
 # Utilities
 # --------------------------------------------------------------------------- #
@@ -233,7 +262,8 @@ def _nullcontext():
 # --------------------------------------------------------------------------- #
 
 if __name__ == "__main__":
-    root = Path("./demo_memory")
+    # Set root to workspace root for demo
+    root = Path("../../memory_core")
     mgr = NewMemoryManager(root)
 
     logging.info("Creating demo memories…")

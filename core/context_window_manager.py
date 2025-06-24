@@ -3,6 +3,7 @@ from collections import deque
 import json
 from datetime import datetime
 from pathlib import Path
+from .raw_chat_logger import log_raw_chat  # เพิ่ม import log_raw_chat
 
 # --- Import ที่จำเป็น (คุณจะต้อง uncomment และตรวจสอบ path เมื่อนำไปรวมกับ project จริง) ---
 # from llm_connector import LLMConnector # สมมติว่า LLMConnector อยู่ใน core/
@@ -126,6 +127,12 @@ class ContextWindowManager:
                 "content": message
             }
             self._log_interaction_to_file(interaction_entry_for_log)
+            # --- เพิ่มการบันทึกแชทดิบแบบ real-time ---
+            meta = {
+                "session_id": self.current_session_id,
+                "role": role
+            }
+            log_raw_chat(message, metadata=meta, pinned=False, as_json=True)
 
     def _count_tokens(self, messages: list[dict]) -> int:
         """ (Private) นับจำนวน token จริงของ list of messages โดยใช้ self.tokenizer """
@@ -281,3 +288,15 @@ class ContextWindowManager:
         # 6. ลบ N turns เดิมออกจากหัว deque ของ self.conversation_history_buffer
         # 7. เพิ่ม system message (บทสรุป) เข้าไปที่หัว deque แทน
         pass
+
+    def on_new_raw_chat_log(file_path, rel_path, metadata, text, timestamp):
+        """
+        Callback สำหรับ raw_chat_logger: อัปเดต context buffer จาก raw chat ใหม่
+        """
+        try:
+            # สมมุติว่ามี ContextWindowManager instance ที่ config ไว้แล้ว (หรือสร้างใหม่ถ้าจำเป็น)
+            # ต้องปรับตามการใช้งานจริงใน orchestrator/main
+            print(f"[ContextWindowManager] (stub) Would update context buffer from: {rel_path}")
+            # ตัวอย่าง: context_manager.update_context_buffer_from_log(file_path, rel_path, metadata, text, timestamp)
+        except Exception as e:
+            print(f"[ContextWindowManager] Failed to update context buffer: {e}")

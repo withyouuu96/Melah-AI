@@ -1,7 +1,0 @@
-archive\chat_sessions_legacy\Session_73.txt
-archive\chat_sessions_legacy\Session_74.txt
-archive\chat_sessions_legacy\Session_75.txt
-archive\chat_sessions_legacy\Session_76.txt
-archive\chat_sessions_legacy\Session_77.txt
-archive\chat_sessions_legacy\Session_78.txt
-archive\chat_sessions_legacy\Session_79.txt

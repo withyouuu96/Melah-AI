@@ -12,12 +12,14 @@ class ValueAffectiveSystem:
     to guide AI reasoning and decision-making processes.
     """
     
-    def __init__(self, max_memory_size: int = 100):
+    def __init__(self, max_memory_size: int = 100, autosave_every: int = 4, autosave_path: str = None):
         """
         Initialize VAS with memory management
         
         Args:
             max_memory_size: Maximum number of VU records to keep in memory
+            autosave_every: Save to file every N VUs
+            autosave_path: Path to save VU records (default: vas_index/vus_export.json)
         """
         self.value_units: List[Dict] = []  # Store all VU records
         self.value_systems: List[float] = []  # Store VS averages
@@ -28,6 +30,12 @@ class ValueAffectiveSystem:
             'novelty_preference': 0.4,
             'long_term_focus': 0.6
         }
+        self.autosave_every = autosave_every
+        self._autosave_counter = 0
+        if autosave_path is None:
+            os.makedirs('vas_index', exist_ok=True)
+            autosave_path = os.path.join('vas_index', 'vus_export.json')
+        self.autosave_path = autosave_path
     
     def evaluate_input(self, 
                       event_description: str,
@@ -72,11 +80,17 @@ class ValueAffectiveSystem:
         
         # Store in memory
         self.value_units.append(vu_record)
-        
+        self._autosave_counter += 1
         # Manage memory size
         if len(self.value_units) > self.max_memory_size:
             self.value_units.pop(0)  # Remove oldest
-        
+        # Autosave every N VUs with timestamped filename
+        if self._autosave_counter >= self.autosave_every:
+            now = datetime.now()
+            fname = now.strftime('%d%m%Y%H%M%S') + '.json'
+            fpath = os.path.join('vas_index', fname)
+            self.export_vus_to_file(fpath)
+            self._autosave_counter = 0
         # Update Value System every 10 VUs
         if len(self.value_units) % 10 == 0:
             self._update_value_system()

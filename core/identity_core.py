@@ -36,6 +36,7 @@ from core.new_memory_manager import NewMemoryManager
 from core.memory_hooks import MemoryHooks
 from core.vector_memory_retriever import VectorMemoryRetriever
 from .reflective_buffering_vas import ReflectiveBufferingVAS
+from .raw_chat_logger import log_raw_chat  # เพิ่ม import log_raw_chat
 
 class IdentityCore:
     """
@@ -212,6 +213,13 @@ class IdentityCore:
 
         if user_input.startswith('/'):
             return self._handle_system_command(user_input)
+
+        # --- เพิ่มการบันทึกแชทดิบ (user input) ---
+        meta = {
+            "source": "identity_core",
+            "role": "user"
+        }
+        log_raw_chat(user_input, metadata=meta, pinned=False, as_json=True)
 
         max_retries = 3
         attempts = 0
@@ -735,6 +743,16 @@ class IdentityCore:
         สะท้อนและบันทึกคุณค่าจาก buffer (ควรเรียกเมื่อจบ session หรือจังหวะสำคัญ)
         """
         self.vas_system.reflect_and_update()
+
+    def on_new_raw_chat_log(file_path, rel_path, metadata, text, timestamp):
+        """
+        Callback สำหรับ raw_chat_logger: อัปเดต identity หรือ core state จาก raw chat ใหม่
+        """
+        try:
+            print(f"[IdentityCore] (stub) Would update identity/core state from: {rel_path}")
+            # ตัวอย่าง: self.update_identity_from_chat(file_path, rel_path, metadata, text, timestamp)
+        except Exception as e:
+            print(f"[IdentityCore] Failed to update identity/core state: {e}")
 
 # ======== วิธีทดสอบเบื้องต้น =========
 if __name__ == '__main__':

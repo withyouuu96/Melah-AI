@@ -2,21 +2,21 @@
   "identity": "IdentityCore",
   "core_dependencies": [
     "memory_path_bridge.py",
+    "path_manager.py",
+    "melah_nlp_th.py",
+    "melah_nlp_processor.py",
+    "memory_meta_manager.py",
     "language_stylizer.py",
     "reflector.py",
-    "melah_ml_processor.py",
-    "cot_engine.py",
-    "memory_meta_manager.py",
-    "context_window_manager.py",
     "truth_core.py",
+    "refine_layer.py",
+    "cot_engine.py",
+    "reflective_buffering_vas.py",
+    "context_window_manager.py",
     "llm_connector.py",
     "vector_memory_index.py",
-    "path_manager.py",
-    "reflective_buffering_vas.py",
-    "melah_nlp_th.py",
     "int_world.py",
-    "melah_nlp_processor.py",
-    "refine_layer.py"
+    "melah_ml_processor.py"
   ],
   "core_systems": {
     "current_seed": {
@@ -214,8 +214,8 @@
     },
     "reflector": {
       "dependencies": [
-        "reflective_buffering_vas.py",
-        "int_world.py"
+        "int_world.py",
+        "reflective_buffering_vas.py"
       ],
       "status": "ok",
       "description": "ทำหน้าที่เป็น 'กระจกใจ' ของ Melah",
@@ -226,8 +226,8 @@
     },
     "refine_layer": {
       "dependencies": [
-        "reflective_buffering_vas.py",
-        "identity_core.py"
+        "identity_core.py",
+        "reflective_buffering_vas.py"
       ],
       "status": "ok",
       "description": "No description available",
@@ -336,7 +336,7 @@
       "issue_message": null
     }
   },
-  "last_updated": "2025-06-23T13:06:30.434858",
+  "last_updated": "2025-06-23T17:40:17.909592",
   "self_emotion": "calm",
   "monitoring": {
     "last_check": "2025-06-21T21:48:30.949752",
