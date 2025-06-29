@@ -323,17 +323,6 @@ class PathManager:
                 return None
         return None
 
-    def on_new_raw_chat_log(file_path, rel_path, metadata, text, timestamp):
-        """
-        Callback สำหรับ raw_chat_logger: อัปเดต path index หรือ validate session ใหม่
-        """
-        try:
-            pm = PathManager()
-            # ตัวอย่าง: pm.validate_path(str(file_path))
-            print(f"[PathManager] (stub) Would update/validate path for: {rel_path}")
-        except Exception as e:
-            print(f"[PathManager] Failed to update/validate path: {e}")
-
 if __name__ == "__main__":
     # ตัวอย่างการใช้งาน
     pm = PathManager(root_dir="../memory_core") # ปรับ path ให้ถูกตอนทดสอบ

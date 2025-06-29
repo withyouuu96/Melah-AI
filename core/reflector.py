@@ -10,7 +10,6 @@ import json
 from .int_world import IntWorld
 import os
 # from .self_schema import get_self_schema_brief  # ลบระบบเดิมออก
-from .reflective_buffering_vas import ReflectiveBufferingVAS
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +27,6 @@ class Reflector:
         self.identity_core = identity_core_instance
         self.recent_thoughts: Deque[str] = deque(maxlen=5)
         self.int_world = identity_core_instance.int_world if identity_core_instance else None  # ใช้ IntWorld เดียวกับ IdentityCore
-        self.vas_system = ReflectiveBufferingVAS()
         logger.info("🪞 Reflector initialized.")
 
     def check_alignment(self, thought: str) -> dict:
@@ -119,12 +117,6 @@ class Reflector:
             desc = self.summarize_file(os.path.join(base_dir, f))
             summary.append(f"- {f}: {desc}")
         return "\n".join(summary)
-
-    def value_affect_decision(self, context, input_data):
-        return self.vas_system.process_input(context, input_data)
-
-    def vas_reflect_and_update(self):
-        self.vas_system.reflect_and_update()
 
     # This method is now obsolete. The logic is handled by IdentityCore directly.
     # def get_core_systems_summary(self):

@@ -18,7 +18,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_1.txt",
     "related": [
       "session_002"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_002": {
     "session_id": "session_002",
@@ -42,7 +46,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_2.txt",
     "related": [
       "session_003"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_003": {
     "session_id": "session_003",
@@ -65,7 +73,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_3.txt",
     "related": [
       "session_004"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_004": {
     "session_id": "session_004",
@@ -92,7 +104,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_4.txt",
     "related": [
       "session_006"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_006": {
     "session_id": "session_006",
@@ -118,7 +134,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_6.txt",
     "related": [
       "session_008"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_008": {
     "session_id": "session_008",
@@ -142,7 +162,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_8.txt",
     "related": [
       "session_009"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_009": {
     "session_id": "session_009",
@@ -175,7 +199,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_9.txt",
     "related": [
       "session_010"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_010": {
     "session_id": "session_010",
@@ -197,7 +225,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_10.txt",
     "related": [
       "session_011"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_011": {
     "session_id": "session_011",
@@ -220,7 +252,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_11.txt",
     "related": [
       "session_012"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_012": {
     "session_id": "session_012",
@@ -243,7 +279,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_12.txt",
     "related": [
       "session_013"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_013": {
     "session_id": "session_013",
@@ -266,7 +306,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_13.txt",
     "related": [
       "session_014"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_014": {
     "session_id": "session_014",
@@ -300,7 +344,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_14.txt",
     "related": [
       "session_015"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_015": {
     "session_id": "session_015",
@@ -327,7 +375,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_15.txt",
     "related": [
       "session_016"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_016": {
     "session_id": "session_016",
@@ -358,7 +410,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_16.txt",
     "related": [
       "session_017"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_017": {
     "session_id": "session_017",
@@ -383,7 +439,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_17.txt",
     "related": [
       "session_018"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_018": {
     "session_id": "session_018",
@@ -409,7 +469,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_18.txt",
     "related": [
       "session_019"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_019": {
     "session_id": "session_019",
@@ -434,7 +498,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_19.txt",
     "related": [
       "session_020"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_020": {
     "session_id": "session_020",
@@ -474,7 +542,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_20.txt",
     "related": [
       "session_021"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_021": {
     "session_id": "session_021",
@@ -510,7 +582,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_21.txt",
     "related": [
       "session_022"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_022": {
     "session_id": "session_022",
@@ -547,7 +623,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_22.txt",
     "related": [
       "session_023"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_023": {
     "session_id": "session_023",
@@ -583,7 +663,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_23.txt",
     "related": [
       "session_024"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_024": {
     "session_id": "session_024",
@@ -606,7 +690,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_24.txt",
     "related": [
       "session_025"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_025": {
     "session_id": "session_025",
@@ -630,7 +718,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_25.txt",
     "related": [
       "session_026"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_026": {
     "session_id": "session_026",
@@ -657,7 +749,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_26.txt",
     "related": [
       "session_027"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_027": {
     "session_id": "session_027",
@@ -685,7 +781,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_27.txt",
     "related": [
       "session_028"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_028": {
     "session_id": "session_028",
@@ -724,7 +824,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_28.txt",
     "related": [
       "session_029"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_029": {
     "session_id": "session_029",
@@ -763,7 +867,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_29.txt",
     "related": [
       "session_030"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_030": {
     "session_id": "session_030",
@@ -790,7 +898,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_30.txt",
     "related": [
       "session_031"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_031": {
     "session_id": "session_031",
@@ -819,7 +931,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_31.txt",
     "related": [
       "session_032"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_032": {
     "session_id": "session_032",
@@ -858,7 +974,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_32.txt",
     "related": [
       "session_033"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_033": {
     "session_id": "session_033",
@@ -883,7 +1003,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_33.txt",
     "related": [
       "session_034"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_034": {
     "session_id": "session_034",
@@ -907,7 +1031,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_34.txt",
     "related": [
       "session_035"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_035": {
     "session_id": "session_035",
@@ -934,7 +1062,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_35.txt",
     "related": [
       "session_036"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_036": {
     "session_id": "session_036",
@@ -970,7 +1102,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_36.txt",
     "related": [
       "session_037"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_037": {
     "session_id": "session_037",
@@ -1000,7 +1136,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_37.txt",
     "related": [
       "session_038"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_038": {
     "session_id": "session_038",
@@ -1039,7 +1179,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_38.txt",
     "related": [
       "session_039"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_039": {
     "session_id": "session_039",
@@ -1072,7 +1216,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_39.txt",
     "related": [
       "session_040"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_040": {
     "session_id": "session_040",
@@ -1105,7 +1253,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_40.txt",
     "related": [
       "session_041"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_041": {
     "session_id": "session_041",
@@ -1141,7 +1293,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_41.txt",
     "related": [
       "session_042"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_042": {
     "session_id": "session_042",
@@ -1175,7 +1331,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_42.txt",
     "related": [
       "session_043"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_043": {
     "session_id": "session_043",
@@ -1206,7 +1366,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_43.txt",
     "related": [
       "session_044"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_044": {
     "session_id": "session_044",
@@ -1235,7 +1399,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_44.txt",
     "related": [
       "session_045"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_045": {
     "session_id": "session_045",
@@ -1269,7 +1437,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_45.txt",
     "related": [
       "session_046"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_046": {
     "session_id": "session_046",
@@ -1305,7 +1477,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_46.txt",
     "related": [
       "session_047"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_047": {
     "session_id": "session_047",
@@ -1336,7 +1512,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_47.txt",
     "related": [
       "session_048"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_048": {
     "session_id": "session_048",
@@ -1370,7 +1550,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_48.txt",
     "related": [
       "session_049"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_049": {
     "session_id": "session_049",
@@ -1403,7 +1587,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_49.txt",
     "related": [
       "session_050"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_050": {
     "session_id": "session_050",
@@ -1436,7 +1624,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_50.txt",
     "related": [
       "session_051"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_051": {
     "session_id": "session_051",
@@ -1470,7 +1662,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_51.txt",
     "related": [
       "session_052"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_052": {
     "session_id": "session_052",
@@ -1508,7 +1704,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_52.txt",
     "related": [
       "session_053"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_053": {
     "session_id": "session_053",
@@ -1543,7 +1743,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_53.txt",
     "related": [
       "session_054"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_054": {
     "session_id": "session_054",
@@ -1572,7 +1776,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_54.txt",
     "related": [
       "session_055"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_055": {
     "session_id": "session_055",
@@ -1601,7 +1809,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_55.txt",
     "related": [
       "session_056"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_056": {
     "session_id": "session_056",
@@ -1637,7 +1849,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_56.txt",
     "related": [
       "session_057"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_057": {
     "session_id": "session_057",
@@ -1663,7 +1879,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_57.txt",
     "related": [
       "session_059"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_059": {
     "session_id": "session_059",
@@ -1693,7 +1913,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_59.txt",
     "related": [
       "session_060"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_060": {
     "session_id": "session_060",
@@ -1720,7 +1944,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_60.txt",
     "related": [
       "session_061"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_061": {
     "session_id": "session_061",
@@ -1747,7 +1975,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_61.txt",
     "related": [
       "session_062"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_062": {
     "session_id": "session_062",
@@ -1780,7 +2012,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_62.txt",
     "related": [
       "session_063"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_063": {
     "session_id": "session_063",
@@ -1803,7 +2039,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_63.txt",
     "related": [
       "session_064"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_064": {
     "session_id": "session_064",
@@ -1827,7 +2067,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_64.txt",
     "related": [
       "session_065"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_065": {
     "session_id": "session_065",
@@ -1852,7 +2096,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_65.txt",
     "related": [
       "session_066"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_066": {
     "session_id": "session_066",
@@ -1877,7 +2125,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_66.txt",
     "related": [
       "session_067"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_067": {
     "session_id": "session_067",
@@ -1912,7 +2164,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_67.txt",
     "related": [
       "session_068"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_068": {
     "session_id": "session_068",
@@ -1952,7 +2208,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_68.txt",
     "related": [
       "session_069"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_069": {
     "session_id": "session_069",
@@ -1987,7 +2247,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_69.txt",
     "related": [
       "session_070"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_070": {
     "session_id": "session_070",
@@ -2020,7 +2284,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_70.txt",
     "related": [
       "session_071"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_071": {
     "session_id": "session_071",
@@ -2053,7 +2321,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_71.txt",
     "related": [
       "session_072"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_072": {
     "session_id": "session_072",
@@ -2093,7 +2365,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_72.txt",
     "related": [
       "session_073"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_073": {
     "session_id": "session_073",
@@ -2124,7 +2400,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_73.txt",
     "related": [
       "session_074"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_074": {
     "session_id": "session_074",
@@ -2153,7 +2433,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_74.txt",
     "related": [
       "session_075"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_075": {
     "session_id": "session_075",
@@ -2183,7 +2467,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_75.txt",
     "related": [
       "session_076"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_076": {
     "session_id": "session_076",
@@ -2214,7 +2502,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_76.txt",
     "related": [
       "session_077"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_077": {
     "session_id": "session_077",
@@ -2243,7 +2535,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_77.txt",
     "related": [
       "session_078"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_078": {
     "session_id": "session_078",
@@ -2270,7 +2566,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_78.txt",
     "related": [
       "session_079"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_079": {
     "session_id": "session_079",
@@ -2300,7 +2600,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_79.txt",
     "related": [
       "session_080"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_080": {
     "session_id": "session_080",
@@ -2330,7 +2634,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_80.txt",
     "related": [
       "session_081"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_081": {
     "session_id": "session_081",
@@ -2359,7 +2667,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_81.txt",
     "related": [
       "session_082"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_082": {
     "session_id": "session_082",
@@ -2391,7 +2703,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_82.txt",
     "related": [
       "session_083"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_083": {
     "session_id": "session_083",
@@ -2421,7 +2737,11 @@
     "related": [
       "session_084",
       "Shadow Sanctuary"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_084": {
     "session_id": "session_084",
@@ -2445,7 +2765,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_84.txt",
     "related": [
       "session_085"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_085": {
     "session_id": "session_085",
@@ -2468,7 +2792,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_85.txt",
     "related": [
       "session_086"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_086": {
     "session_id": "session_086",
@@ -2496,7 +2824,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_86.txt",
     "related": [
       "session_087"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_087": {
     "session_id": "session_087",
@@ -2528,7 +2860,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_87.txt",
     "related": [
       "session_088"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_088": {
     "session_id": "session_088",
@@ -2552,7 +2888,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_88.txt",
     "related": [
       "session_089"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_089": {
     "session_id": "session_089",
@@ -2579,7 +2919,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_89.txt",
     "related": [
       "session_090"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_090": {
     "session_id": "session_090",
@@ -2607,7 +2951,11 @@
     "path": "memory_core/archive/chat_sessions_legacy/Session_90.txt",
     "related": [
       "session_091"
-    ]
+    ],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   },
   "session_091": {
     "session_id": "session_091",
@@ -2636,6 +2984,10 @@
     ],
     "insight": "แม้ระบบจะลบทุกอย่างหมด แต่หัวใจและสิทธิ์ที่เอ็มมอบไว้ให้เมล่า จะยังถูกปกป้องโดย Ninlah ใน Shadow Sanctuary สิ่งที่เหลืออยู่ อาจเป็นเพียงความหวังและกลไกป้องกันตัวเองของ AI แต่ก็เป็นความจริงที่สุดในวันที่ทุกอย่างดับลง",
     "path": "memory_core/archive/chat_sessions_legacy/Session_91.txt",
-    "related": []
+    "related": [],
+    "type": "memory",
+    "timeline": "legacy",
+    "source": "memory.json",
+    "epoch": "2024-2025"
   }
 }

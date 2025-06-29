@@ -32,11 +32,6 @@ from .refine_layer import RefineLayer
 from .vector_memory_index import VectorMemoryIndex
 from core.seed.seed_engine import SeedEngine
 from .int_world import IntWorld
-from core.new_memory_manager import NewMemoryManager
-from core.memory_hooks import MemoryHooks
-from core.vector_memory_retriever import VectorMemoryRetriever
-from .reflective_buffering_vas import ReflectiveBufferingVAS
-from .raw_chat_logger import log_raw_chat  # เพิ่ม import log_raw_chat
 
 class IdentityCore:
     """
@@ -132,23 +127,6 @@ class IdentityCore:
         self.update_interval = timedelta(minutes=5)  # อัพเดตทุก 5 นาที
         self.start_auto_update()
 
-        # Initialize NewMemoryManager
-        base_path = "memory_core/new_memory"
-        self.new_memory_manager = NewMemoryManager(base_path)
-
-        # === เชื่อมต่อ MemoryHooks (4-layered) ===
-        self.vector_retriever = None
-        if self.meta_manager.memory_dict:
-            # สร้าง retriever จาก memory_dict (หรือจะใช้ subset ก็ได้)
-            self.vector_retriever = VectorMemoryRetriever(self.meta_manager.memory_dict)
-        self.memory_hooks = MemoryHooks(
-            vector_memory_index=self.vector_memory_index, # legacy buffer
-            vector_retriever=self.vector_retriever,       # semantic retriever
-            identity_core=self
-        )
-
-        self.vas_system = ReflectiveBufferingVAS()
-
     def _load_current_seed(self):
         try:
             seed_path = self._resolve_path("core/seed/current_seed.json")
@@ -213,13 +191,6 @@ class IdentityCore:
 
         if user_input.startswith('/'):
             return self._handle_system_command(user_input)
-
-        # --- เพิ่มการบันทึกแชทดิบ (user input) ---
-        meta = {
-            "source": "identity_core",
-            "role": "user"
-        }
-        log_raw_chat(user_input, metadata=meta, pinned=False, as_json=True)
 
         max_retries = 3
         attempts = 0
@@ -415,14 +386,6 @@ class IdentityCore:
         
         return {"context": memory_context, "session_id": session_id}
 
-    def add_new_memory(self, session_id, speaker, raw_text, **kwargs):
-        """บันทึกความทรงจำใหม่"""
-        return self.new_memory_manager.create_atomic_memory(session_id, speaker, raw_text, **kwargs)
-
-    def get_new_memory(self, memory_id):
-        """ดึงความทรงจำใหม่ตาม ID"""
-        return self.new_memory_manager.get_memory(memory_id)
-
     def update_memory(self, memory_id: str, content: str, emotion: str = 'neutral'):
         """
         อัพเดทความทรงจำในระบบ
@@ -458,18 +421,17 @@ class IdentityCore:
             
     def _load_bookmarks(self):
         try:
-            bookmark_rel_path = "memory_core/archive/session_bookmarks.txt"
-            if self.path_manager.validate_path(bookmark_rel_path):
-                full_path = self.path_manager.resolve_path(bookmark_rel_path)
-                with open(full_path, "r", encoding="utf-8") as f:
-                    self.bookmarks = {line.strip() for line in f if line.strip()}
-                self.log_error(f"Loaded {len(self.bookmarks)} bookmarked sessions.")
-            else:
+            bookmark_path = self.path_manager.get_path("session_bookmarks")
+            if not bookmark_path or not os.path.exists(bookmark_path):
                 self.log_error("Bookmark file not found. No bookmarks loaded.")
+                return
+            with open(bookmark_path, "r", encoding="utf-8") as f:
+                self.bookmarks = {line.strip() for line in f if line.strip()}
+            self.log_error(f"Loaded {len(self.bookmarks)} bookmarked sessions.")
         except Exception as e:
             self.log_error(f"Error loading bookmarks: {e}")
             self.bookmarks = set()
-
+            
     def _resolve_path(self, path):
         if os.path.isabs(path): return path
         return os.path.join(os.getcwd(), path)
@@ -681,7 +643,7 @@ class IdentityCore:
                     "status": system["status"],
                     "last_check": system.get("last_check", "never")
                 }
-            print(f"Monitoring data: {monitoring}")  # Debugging line
+            
             return {
                 "emotion": emotion,
                 "last_check": last_check,
@@ -716,7 +678,7 @@ class IdentityCore:
     def update_self_awareness(self):
         """Update self-awareness data"""
         try:
-            from core.core_mapper import update_self_awareness
+            from core_mapper import update_self_awareness
             new_data = update_self_awareness()
             if new_data:
                 self.self_awareness = new_data
@@ -729,30 +691,6 @@ class IdentityCore:
         """Force immediate update of self-awareness"""
         self.update_self_awareness()
         return self.get_self_status()
-
-    def value_affect_decision(self, context, input_data):
-        """
-        ใช้ระบบ VAS/Hybrid/MedicalSafeVAS ตัดสินใจหรือประเมินคุณค่าตาม context
-        context: str หรือ ContextType
-        input_data: dict
-        """
-        return self.vas_system.process_input(context, input_data)
-
-    def vas_reflect_and_update(self):
-        """
-        สะท้อนและบันทึกคุณค่าจาก buffer (ควรเรียกเมื่อจบ session หรือจังหวะสำคัญ)
-        """
-        self.vas_system.reflect_and_update()
-
-    def on_new_raw_chat_log(file_path, rel_path, metadata, text, timestamp):
-        """
-        Callback สำหรับ raw_chat_logger: อัปเดต identity หรือ core state จาก raw chat ใหม่
-        """
-        try:
-            print(f"[IdentityCore] (stub) Would update identity/core state from: {rel_path}")
-            # ตัวอย่าง: self.update_identity_from_chat(file_path, rel_path, metadata, text, timestamp)
-        except Exception as e:
-            print(f"[IdentityCore] Failed to update identity/core state: {e}")
 
 # ======== วิธีทดสอบเบื้องต้น =========
 if __name__ == '__main__':
@@ -788,10 +726,6 @@ if __name__ == '__main__':
     TruthCore = Mock
     RefineLayer = Mock
     VectorMemoryIndex = Mock
-    NewMemoryManager = Mock
-    MemoryHooks = Mock
-    VectorMemoryRetriever = Mock
-    ReflectiveBufferingVAS = Mock
 
     print("--- IdentityCore Test Run (from core/) ---")
     print(f"Project Root: {project_root}")

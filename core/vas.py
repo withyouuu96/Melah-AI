@@ -2,7 +2,6 @@ import json
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 import statistics
-import os
 
 class ValueAffectiveSystem:
     """
@@ -12,14 +11,12 @@ class ValueAffectiveSystem:
     to guide AI reasoning and decision-making processes.
     """
     
-    def __init__(self, max_memory_size: int = 100, autosave_every: int = 4, autosave_path: str = None):
+    def __init__(self, max_memory_size: int = 100):
         """
         Initialize VAS with memory management
         
         Args:
             max_memory_size: Maximum number of VU records to keep in memory
-            autosave_every: Save to file every N VUs
-            autosave_path: Path to save VU records (default: vas_index/vus_export.json)
         """
         self.value_units: List[Dict] = []  # Store all VU records
         self.value_systems: List[float] = []  # Store VS averages
@@ -30,12 +27,6 @@ class ValueAffectiveSystem:
             'novelty_preference': 0.4,
             'long_term_focus': 0.6
         }
-        self.autosave_every = autosave_every
-        self._autosave_counter = 0
-        if autosave_path is None:
-            os.makedirs('vas_index', exist_ok=True)
-            autosave_path = os.path.join('vas_index', 'vus_export.json')
-        self.autosave_path = autosave_path
     
     def evaluate_input(self, 
                       event_description: str,
@@ -80,17 +71,11 @@ class ValueAffectiveSystem:
         
         # Store in memory
         self.value_units.append(vu_record)
-        self._autosave_counter += 1
+        
         # Manage memory size
         if len(self.value_units) > self.max_memory_size:
             self.value_units.pop(0)  # Remove oldest
-        # Autosave every N VUs with timestamped filename
-        if self._autosave_counter >= self.autosave_every:
-            now = datetime.now()
-            fname = now.strftime('%d%m%Y%H%M%S') + '.json'
-            fpath = os.path.join('vas_index', fname)
-            self.export_vus_to_file(fpath)
-            self._autosave_counter = 0
+        
         # Update Value System every 10 VUs
         if len(self.value_units) % 10 == 0:
             self._update_value_system()
@@ -269,38 +254,6 @@ class ValueAffectiveSystem:
         except Exception as e:
             print(f"Error importing state: {e}")
             return False
-    
-    def export_vus_to_file(self, file_path=None):
-        """
-        Export all VU records to a JSON file (default: vas_index/vus_export.json)
-        """
-        if file_path is None:
-            os.makedirs('vas_index', exist_ok=True)
-            file_path = os.path.join('vas_index', 'vus_export.json')
-        with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(self.value_units, f, ensure_ascii=False, indent=2)
-        return file_path
-
-    def import_vus_from_file(self, file_path=None):
-        """
-        Import VU records from a JSON file (default: vas_index/vus_export.json)
-        """
-        if file_path is None:
-            file_path = os.path.join('vas_index', 'vus_export.json')
-        if os.path.exists(file_path):
-            with open(file_path, 'r', encoding='utf-8') as f:
-                self.value_units = json.load(f)
-            return True
-        return False
-
-    def lookup_vu(self, text):
-        """
-        ค้นหา VU ที่ตรงกับ event_description หรือ text ใกล้เคียง (exact match)
-        """
-        for vu in self.value_units:
-            if vu.get('event') == text or vu.get('event_description') == text:
-                return vu
-        return None
 
 # Example usage and testing
 if __name__ == "__main__":

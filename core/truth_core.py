@@ -2,7 +2,6 @@
 
 import time
 from typing import Dict, List, Optional, Tuple
-from .reflective_buffering_vas import ReflectiveBufferingVAS
 
 class TruthCore:
     """ระบบตรวจสอบความจริงและความน่าเชื่อถือของข้อมูล
@@ -48,9 +47,6 @@ class TruthCore:
             'memory_confidence': {},   # ความมั่นใจในแต่ละความทรงจำ
             'memory_usage_count': {}   # จำนวนครั้งที่ใช้ความทรงจำ
         }
-        
-        # ระบบ Reflective Buffering VAS
-        self.vas_system = ReflectiveBufferingVAS()
     
     # 1. Validate Response
     def validate_response(self, memory_passed: bool, context_passed: bool, risk_passed: bool, response_text: str) -> bool:
@@ -259,13 +255,6 @@ class TruthCore:
         elif any(e in emotion for e in negative_emotions):
             return 'negative'
         return 'neutral'
-    
-    # 7. Value Affect System Integration
-    def value_affect_decision(self, context, input_data):
-        return self.vas_system.process_input(context, input_data)
-
-    def vas_reflect_and_update(self):
-        self.vas_system.reflect_and_update()
 
 # ========== วิธีใช้งานจาก identity_core.py ==========
 

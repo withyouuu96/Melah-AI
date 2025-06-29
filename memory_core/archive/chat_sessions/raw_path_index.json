@@ -230,5 +230,101 @@
       "session_id": "65da840f-508b-4f31-8ced-7bb2557bbbc2",
       "role": "assistant"
     }
+  },
+  "daily/2025/06/24/session_20250624_171839.json": {
+    "timestamp": "2025-06-24T17:18:39.768636",
+    "pinned": false,
+    "meta": {
+      "session_id": "12bf79a5-310f-4615-8402-60991fd03a7d",
+      "role": "user"
+    }
+  },
+  "daily/2025/06/24/session_20250624_171840.json": {
+    "timestamp": "2025-06-24T17:18:40.674289",
+    "pinned": false,
+    "meta": {
+      "session_id": "12bf79a5-310f-4615-8402-60991fd03a7d",
+      "role": "assistant"
+    }
+  },
+  "daily/2025/06/24/session_20250624_172225.json": {
+    "timestamp": "2025-06-24T17:22:25.510652",
+    "pinned": false,
+    "meta": {
+      "session_id": "0e7140e9-c43f-40dd-9575-c70b82f3a988",
+      "role": "user"
+    }
+  },
+  "daily/2025/06/24/session_20250624_172227.json": {
+    "timestamp": "2025-06-24T17:22:27.699680",
+    "pinned": false,
+    "meta": {
+      "session_id": "0e7140e9-c43f-40dd-9575-c70b82f3a988",
+      "role": "assistant"
+    }
+  },
+  "daily/2025/06/24/session_20250624_172233.json": {
+    "timestamp": "2025-06-24T17:22:33.969899",
+    "pinned": false,
+    "meta": {
+      "session_id": "0e7140e9-c43f-40dd-9575-c70b82f3a988",
+      "role": "user"
+    }
+  },
+  "daily/2025/06/24/session_20250624_172235.json": {
+    "timestamp": "2025-06-24T17:22:35.069530",
+    "pinned": false,
+    "meta": {
+      "session_id": "0e7140e9-c43f-40dd-9575-c70b82f3a988",
+      "role": "assistant"
+    }
+  },
+  "daily/2025/06/24/session_20250624_173001.json": {
+    "timestamp": "2025-06-24T17:30:01.435064",
+    "pinned": false,
+    "meta": {
+      "session_id": "84b7e092-b8e2-4168-b0d7-ec73a52deef9",
+      "role": "user"
+    }
+  },
+  "daily/2025/06/24/session_20250624_173002.json": {
+    "timestamp": "2025-06-24T17:30:02.355262",
+    "pinned": false,
+    "meta": {
+      "session_id": "84b7e092-b8e2-4168-b0d7-ec73a52deef9",
+      "role": "assistant"
+    }
+  },
+  "daily/2025/06/24/session_20250624_173206.json": {
+    "timestamp": "2025-06-24T17:32:06.225906",
+    "pinned": false,
+    "meta": {
+      "session_id": "729310fd-66b3-4fb7-9a40-2f8fe7f3efe4",
+      "role": "user"
+    }
+  },
+  "daily/2025/06/24/session_20250624_173207.json": {
+    "timestamp": "2025-06-24T17:32:07.802774",
+    "pinned": false,
+    "meta": {
+      "session_id": "729310fd-66b3-4fb7-9a40-2f8fe7f3efe4",
+      "role": "assistant"
+    }
+  },
+  "daily/2025/06/24/session_20250624_173343.json": {
+    "timestamp": "2025-06-24T17:33:43.894936",
+    "pinned": false,
+    "meta": {
+      "session_id": "8b03f717-11a9-4858-ac65-3c04a9ea038d",
+      "role": "user"
+    }
+  },
+  "daily/2025/06/24/session_20250624_173344.json": {
+    "timestamp": "2025-06-24T17:33:44.779764",
+    "pinned": false,
+    "meta": {
+      "session_id": "8b03f717-11a9-4858-ac65-3c04a9ea038d",
+      "role": "assistant"
+    }
   }
 }
